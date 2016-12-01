@@ -1,0 +1,10 @@
+[package]
+name = "libpoint"
+version = "0.1.0"
+authors = ["Michael Chen <cwchen123@gmail.com>"]
+
+[lib]
+name = "point"
+crate_type = ["dylib"]
+
+[dependencies]
