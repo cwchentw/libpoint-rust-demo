@@ -1,4 +1,5 @@
 require 'ffi'
+require 'objspace'
 
 module MyLib
   extend FFI::Library
@@ -9,10 +10,16 @@ module MyLib
   attach_function :point_new, [:double, :double], :pointer
   attach_function :point_get_x, [:pointer], :double
   attach_function :point_get_y, [:pointer], :double
+  attach_function :point_free, [:pointer], :void
 
   class Point
     def initialize(x, y)
       @p = MyLib::point_new x, y
+      ObjectSpace.define_finalizer(self, self.class.finalize)
+    end
+
+    def self.finalize
+      proc { MyLib::point_free @p }
     end
 
     def x

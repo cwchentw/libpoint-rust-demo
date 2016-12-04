@@ -22,3 +22,12 @@ pub extern "C" fn point_get_y(p: *const Point) -> f64 {
         (*p).y
     }
 }
+
+#[no_mangle]
+pub extern "C" fn point_free(p: *mut Point) {
+    if p.is_null() {
+        return
+    }
+
+    unsafe { Box::from_raw(p); }
+}
