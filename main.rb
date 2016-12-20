@@ -22,6 +22,10 @@ module MyLib
       proc { MyLib::point_free @p }
     end
 
+    def to_s
+      "(#{x}, #{y})"
+    end
+
     def x
       MyLib::point_get_x @p
     end
@@ -32,5 +36,8 @@ module MyLib
   end
 end
 
-p = MyLib::Point.new(6, 4)
-puts "(#{p.x}, #{p.y})"
+if __FILE__ == $0 then
+  p = MyLib::Point.new(6, 4)
+  puts p
+end
+
