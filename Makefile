@@ -13,4 +13,5 @@ rust:
 	cargo build --release
 
 clean:
+	cargo clean
 	$(RM) $(RMFLAG) $(TARGET)

@@ -1,9 +1,5 @@
 #include <stdio.h>
-
-void* point_new(double, double);
-double point_get_x(void*);
-double point_get_y(void*);
-void point_free(void*);
+#include "point.h"
 
 int main() {
   void* p = point_new(6, 4);
